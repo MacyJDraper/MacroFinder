@@ -30,5 +30,33 @@ namespace MacroFinder1.Controllers
             List<Models.Product> products = repo.GetAllProducts();
             return View(products);
         }
+        public IActionResult ViewProduct(int id)
+        {
+            ProductRepository repo = new ProductRepository();
+            Models.Product productToView = repo.GetProduct(id);
+            return View(productToView);
+        }
+
+        public IActionResult UpdateProduct(int id)
+        {
+            ProductRepository repo = new ProductRepository();
+            Models.Product productToUpdate = repo.GetProduct(id);
+
+            return View(productToUpdate);
+        }
+        public IActionResult UpdateProductToDataBase(Models.Product product)
+        {
+            ProductRepository repo = new ProductRepository();
+            repo.UpdateProduct(product);
+            return RedirectToAction("ViewProduct", new { id = product.Product_ID });
+
+        }
+        public IActionResult DeleteProduct(int id)
+        {
+            ProductRepository repo = new ProductRepository();
+            repo.DeleteProduct(id);
+
+            return RedirectToAction("Index");
+        }
     }
 }

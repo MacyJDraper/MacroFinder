@@ -12,12 +12,12 @@
 
     @foreach(Product prod in Model)
     {
-    <tr>
-        <td>@prod.Name</td>
-        <td>@prod.Calories</td>
-        <td>@prod.Fat</td>
-        <td>@prod.Carbohydrate</td>
-        <td>@prod.Protien</td>
-    </tr>
+        <tr>
+            <td><a href="/Product/ViewProduct/@prod.Product_ID">"@prod.Name</a></td>
+            <td>@prod.Calories</td>
+            <td>@prod.Fat</td>
+            <td>@prod.Carbohydrate</td>
+            <td>@prod.Protien</td>
+        </tr>
     }
 </table>

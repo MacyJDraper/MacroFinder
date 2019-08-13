@@ -1,0 +1,16 @@
+﻿@model Product
+
+<h2>@Model.Name</h2>
+
+<h3>Cal: @Model.Calories</h3>
+<h3>Fat: @Model.Fat</h3>
+<h3>Carb: @Model.Carbohydrate</h3>
+<h3>Protien: @Model.Protien</h3>
+
+<div style="display: block">
+    <a href="/Product/UpdateProduct/@Model.Product_ID">Update</a>
+</div>
+
+<div style=display: block">
+    <a href="/Product/DeleteProduct/@Model.Product_ID">Delete</a>
+</div>
