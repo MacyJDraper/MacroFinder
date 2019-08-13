@@ -17,4 +17,16 @@
   <ItemGroup>
     <Folder Include="Views\Product\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="ConnectionStrig.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConnectionString.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Views\Home\About.cshtml" />
+    <Content Remove="Views\Home\Contact.cshtml" />
+  </ItemGroup>
 </Project>

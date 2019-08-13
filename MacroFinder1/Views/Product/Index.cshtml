@@ -4,14 +4,20 @@
 <table>
     <tr>
         <th>Name</th>
-        <th>Price</th>
+        <th>Cal</th>
+        <th>Fat</th>
+        <th>Carb</th>
+        <th>Protien</th>
     </tr>
 
     @foreach(Product prod in Model)
     {
-        <tr>
-            <td>@prod.Name</td>
-            <td>@prod.Price</td>
-        </tr>
+    <tr>
+        <td>@prod.Name</td>
+        <td>@prod.Calories</td>
+        <td>@prod.Fat</td>
+        <td>@prod.Carbohydrate</td>
+        <td>@prod.Protien</td>
+    </tr>
     }
 </table>
