@@ -7,10 +7,14 @@
 <h3>Carb: @Model.Carbohydrate</h3>
 <h3>Protien: @Model.Protien</h3>
 
-<div style="display: block">
-    <a href="/Product/UpdateProduct/@Model.Product_ID">Update</a>
+<div style="display: inline-block">
+    <a href="/Product/UpdateProduct/@Model.Product_ID" class="btn btn-default">Update</a>
 </div>
 
-<div style=display: block">
-    <a href="/Product/DeleteProduct/@Model.Product_ID">Delete</a>
+<div style="display: inline-block">
+    @using(Html.BeginForm("DeleteProduct", "Product", "Post"))
+    {
+        <input type="hidden" asp-for="Product_ID" value="@Model.Product_ID" />
+        <input type="submit" onclick="return confirm('Are you sure?')" value="Delete this product" class="btn btn-default" />
+    }
 </div>

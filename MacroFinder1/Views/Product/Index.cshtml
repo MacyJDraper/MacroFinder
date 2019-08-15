@@ -1,7 +1,7 @@
 ﻿@model List<Product>
 <!-- model List(YourAppName.Models.Product-->
 
-<table>
+<table class="table" style="border-collapse:separate; border-spacing:10px">
     <tr>
         <th>Name</th>
         <th>Cal</th>
@@ -14,10 +14,10 @@
     {
         <tr>
             <td><a href="/Product/ViewProduct/@prod.Product_ID">"@prod.Name</a></td>
-            <td>@prod.Calories</td>
-            <td>@prod.Fat</td>
-            <td>@prod.Carbohydrate</td>
-            <td>@prod.Protien</td>
+            <td style="text-align: right">@prod.Calories</td>
+            <td style="text-align: right">@prod.Fat</td>
+            <td style="text-align: right">@prod.Carbohydrate</td>
+            <td style="text-align: right">@prod.Protien</td>
         </tr>
     }
 </table>

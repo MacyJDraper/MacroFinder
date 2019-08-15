@@ -51,10 +51,10 @@ namespace MacroFinder1.Controllers
             return RedirectToAction("ViewProduct", new { id = product.Product_ID });
 
         }
-        public IActionResult DeleteProduct(int id)
+        public IActionResult DeleteProduct(Product product)
         {
             ProductRepository repo = new ProductRepository();
-            repo.DeleteProduct(id);
+            repo.DeleteProduct(product.Product_ID);
 
             return RedirectToAction("Index");
         }
