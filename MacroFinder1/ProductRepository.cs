@@ -100,5 +100,51 @@ namespace MacroFinder1
                 cmd.ExecuteNonQuery();
             }
         }
+        public List<Product> SearchProduct(IndexViewModel ivm)
+        {
+            int[] priorities = { 100, 50, 25, 12 }; 
+            MySqlConnection conn = new MySqlConnection();
+            conn.ConnectionString = System.IO.File.ReadAllText("ConnectionString.txt");
+
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT Name, Calories, Fat, Carbohydrate, Protien, " +
+                                "(abs(@TargetCal - Calories) / @TargetCal) * 100 + " +
+                                "(abs(@TargetFat - Fat) / @TargetFat) * 50 + " +
+                                "(abs(@TargetCarb - Carbohydrate) / @TargetCarb) * 25 + " +
+                                "(abs(@TargetPro - Protien) / @TargetPro) * 12 " +
+                                "as Score FROM MacroFinderDB.product ORDER BY score;";
+            cmd.Parameters.AddWithValue("CalPriority", priorities[ivm.CalPriority - 1]);
+            cmd.Parameters.AddWithValue("FatPriority", priorities[ivm.CalPriority - 1]);
+            cmd.Parameters.AddWithValue("CarbPriority", priorities[ivm.CalPriority - 1]);
+            cmd.Parameters.AddWithValue("ProPriority", priorities[ivm.CalPriority - 1]);
+
+            cmd.Parameters.AddWithValue("TargetCal", ivm.TargetCal);
+            cmd.Parameters.AddWithValue("TargetFat", ivm.TargetFat);
+            cmd.Parameters.AddWithValue("TargetCarb", ivm.TargetCarb);
+            cmd.Parameters.AddWithValue("TargetPro", ivm.TargetPro);
+
+            using (conn)
+            {
+                conn.Open();
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                List<Product> product = new List<Product>();
+
+                while (reader.Read())
+                {
+                    Product nextProduct = new Product();
+
+                    nextProduct.Name = reader.GetString("Name");
+                    nextProduct.Calories = reader.GetDecimal("Calories");
+                    nextProduct.Fat = reader.GetDecimal("Fat");
+                    nextProduct.Carbohydrate = reader.GetDecimal("Carbohydrate");
+                    nextProduct.Protien = reader.GetDecimal("Protien");
+
+
+                    product.Add(nextProduct);
+                }
+                return product;
+            }
+        }
     }
 }

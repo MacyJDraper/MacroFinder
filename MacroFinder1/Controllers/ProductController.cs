@@ -58,5 +58,11 @@ namespace MacroFinder1.Controllers
 
             return RedirectToAction("Index");
         }
+        public IActionResult SearchForProduct(IndexViewModel ivm)
+        {
+            ProductRepository repo = new ProductRepository();
+            List<Product> results = repo.SearchProduct(ivm);
+            return View("SearchedProduct", results);
+        }
     }
 }

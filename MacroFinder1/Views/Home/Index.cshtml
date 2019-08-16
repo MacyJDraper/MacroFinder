@@ -1,1 +1,50 @@
 ﻿<h1>Search Product</h1>
+@model IndexViewModel
+
+<h2>New Product Information:</h2>
+
+@using (Html.BeginForm("SearchForProduct", "Product", "Post"))
+{
+
+
+    <label asp-for="TargetCal" class="control-label">Calories:</label>
+    <div style="display:table-footer-group">
+        @Html.RadioButtonFor(m => m.CalPriority, 1)
+        @Html.RadioButtonFor(m => m.CalPriority, 2)
+        @Html.RadioButtonFor(m => m.CalPriority, 3)
+        @Html.RadioButtonFor(m => m.CalPriority, 4)
+
+    </div>
+    <input asp-for="TargetCal" type="number" step="0.01" name="TargetCal" class="form-control" value="" />
+
+
+
+   <label asp-for="TargetFat" class="control-label">Fat:</label>
+   <div style="display:table-footer-group">
+       @Html.RadioButtonFor(m => m.FatPriority, 1)
+       @Html.RadioButtonFor(m => m.FatPriority, 2)
+       @Html.RadioButtonFor(m => m.FatPriority, 3)
+       @Html.RadioButtonFor(m => m.FatPriority, 4)
+   </div>
+    <input asp-for="TargetFat" type="number" step="0.01" name="TargetFat" class="form-control" value="" />
+
+    <label asp-for="TargetCarb" class="control-label">Carbohydrate:</label>
+    <div style="display:table-footer-group">
+        @Html.RadioButtonFor(m => m.CarbPriority, 1)
+        @Html.RadioButtonFor(m => m.CarbPriority, 2)
+        @Html.RadioButtonFor(m => m.CarbPriority, 3)
+        @Html.RadioButtonFor(m => m.CarbPriority, 4)
+    </div>
+    <input asp-for="TargetCarb" type="number" step="0.01" name="TargetCarb" class="form-control" value="" />
+
+    <label asp-for="TargetPro" class="control-label">Protien:</label>
+    <div style="display:table-footer-group">
+        @Html.RadioButtonFor(m => m.ProPriority, 1)
+        @Html.RadioButtonFor(m => m.ProPriority, 2)
+        @Html.RadioButtonFor(m => m.ProPriority, 3)
+        @Html.RadioButtonFor(m => m.ProPriority, 4)
+    </div>
+    <input asp-for="TargetPro" type="number" step="0.01" name="TargetPro" class="form-control" value="" />
+
+    <input type="submit" name="Submit" value="Search" class="btn btn-default" style="margin-top:40px" />
+}

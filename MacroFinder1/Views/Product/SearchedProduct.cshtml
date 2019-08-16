@@ -1,0 +1,23 @@
+﻿@model List<Product>
+
+<table class="table" style="border-collapse:separate; border-spacing:10px">
+    <tr>
+        <th>Name</th>
+        <th>Cal</th>
+        <th>Fat</th>
+        <th>Carb</th>
+        <th>Protien</th>
+    </tr>
+
+    @foreach (Product prod in Model)
+    {
+        <tr>
+            <td><a href="/Product/ViewProduct/@prod.Product_ID">"@prod.Name</a></td>
+            <td style="text-align: right">@prod.Calories</td>
+            <td style="text-align: right">@prod.Fat</td>
+            <td style="text-align: right">@prod.Carbohydrate</td>
+            <td style="text-align: right">@prod.Protien</td>
+        </tr>
+    }
+</table>
+

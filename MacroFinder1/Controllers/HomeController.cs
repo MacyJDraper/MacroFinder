@@ -12,7 +12,8 @@ namespace MacroFinder1.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            IndexViewModel ivm = new IndexViewModel();
+            return View(ivm);
         }
 
 
